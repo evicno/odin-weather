@@ -1,0 +1,76 @@
+@font-face {
+  font-family: 'Noto Sans';
+  src:
+    url('../fonts/NotoSans-Regular.woff2') format('woff2'),
+    url('../fonts/NotoSans-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Noto Sans';
+  src:
+    url('../fonts/NotoSans-Italic.woff2') format('woff2'),
+    url('../fonts/NotoSans-Italic.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+body {
+  background-color: #f4f0e4;
+  font-family: 'Noto Sans';
+}
+
+header {
+  height: 150px;
+  background-color: rgba(236, 143, 141, 0.6);
+  display: flex;
+  align-items: center;
+}
+
+header h1 {
+  color: #537d96;
+  font-size: 50px;
+  padding-left: 40px;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 40px;
+}
+
+form {
+  display: flex;
+  gap: 15px;
+}
+
+input,
+button {
+  border-radius: 5px;
+  border: 1px solid black;
+}
+
+input {
+  padding-left: 8px;
+}
+
+.weather {
+  margin-top: 40px;
+  width: 250px;
+  height: 300px;
+  font-size: 20px;
+  background-color: rgba(68, 161, 148, 0.6);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.city {
+  font-size: 28px;
+}
