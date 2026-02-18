@@ -1,9 +1,7 @@
-# odin-js-template
+# odin-weather
 
-JavaScript template for The Odin Project.
+## Credits
 
-Configured with:
+Header icon by <a href="https://www.amcharts.com/free-animated-svg-weather-icons/" target="_blank">AM Charts</a>
 
-- webpack-merge (common, dev, prod)
-- ES Modules (`"type": "module")
-- ESLint and Prettier
+Weather Icons by <a href="https://github.com/visualcrossing/WeatherIcons/tree/main" target="_blank">Virtual Crossing</a>

@@ -19,15 +19,16 @@
 }
 
 body {
-  background-color: #f4f0e4;
+  background-color: #537d96;
   font-family: 'Noto Sans';
 }
 
 header {
   height: 150px;
-  background-color: rgba(236, 143, 141, 0.6);
+  background-color: #f4f0e4;
   display: flex;
   align-items: center;
+  gap: 30px;
 }
 
 header h1 {
@@ -36,6 +37,10 @@ header h1 {
   padding-left: 40px;
 }
 
+header img {
+  height: 100px;
+  width: auto;
+}
 .main {
   display: flex;
   flex-direction: column;
@@ -63,7 +68,7 @@ input {
   width: 250px;
   height: 300px;
   font-size: 20px;
-  background-color: rgba(68, 161, 148, 0.6);
+  background-color: #f4f0e4;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -137,11 +142,11 @@ span {
 }
 
 input:checked + .slider {
-  background-color: #537d96;
+  background-color: #ec8f8d;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #537d96;
+  box-shadow: 0 0 1px #ec8f8d;
 }
 
 input:checked + .slider:before {
