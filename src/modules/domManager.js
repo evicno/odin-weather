@@ -2,6 +2,9 @@ import { getWeatherData } from './weatherManager.js';
 import unknownIcon from '../icons/unknown.svg';
 
 const weatherCard = document.querySelector('.weather');
+const toggle = document.querySelector('#toggle');
+let currentUnit = toggle.value;
+let lastWeatherData = '';
 
 export const renderApp = () => {
   const form = document.querySelector('form');
@@ -23,6 +26,7 @@ export const renderApp = () => {
     getWeatherData(location)
       .then((weatherData) => {
         renderWeather(weatherData);
+        lastWeatherData = weatherData;
         button.disabled = false;
       })
       .catch((error) => {
@@ -42,24 +46,29 @@ function renderWeather(weather) {
   const feelsLike = document.querySelector('.feels-like');
   const humidity = document.querySelector('.humidity');
 
+  const weatherIcon = weather.icon;
+
   weatherCard.style.display = 'flex';
   city.textContent = capitalizeCity(weather.city);
   conditions.textContent = weather.conditions;
 
   // Get icon
-  console.log(weather.icon);
-  const weatherIcon = weather.icon;
   import(`../icons/${weatherIcon}.svg`)
     .then((ic) => (icon.src = ic.default))
     .catch(() => (icon.src = unknownIcon));
-
-  temperature.textContent = weather.temp + ' °F';
-
-  feelsLike.textContent = 'Feels like ' + weather.feelsLike + ' °F';
-
+  // Set temperatures in °F or °C
+  if (currentUnit === 'F') {
+    temperature.textContent = weather.temp + ' °F';
+    feelsLike.textContent = 'Feels like ' + weather.feelsLike + ' °F';
+  } else {
+    temperature.textContent = convertToCelsius(weather.temp) + ' °C';
+    feelsLike.textContent =
+      'Feels like ' + convertToCelsius(weather.feelsLike) + ' °C';
+  }
   humidity.textContent = 'Humidity: ' + weather.humidity + ' %';
 }
 
+// Capitalize city name
 function capitalizeCity(city) {
   const words = city.split(' ');
   return words
@@ -68,3 +77,16 @@ function capitalizeCity(city) {
     })
     .join(' ');
 }
+
+// Convert °F temperatures to °C with one decimal
+function convertToCelsius(fahrenheit) {
+  return Math.round((((fahrenheit - 32) * 5) / 9) * 10) / 10;
+}
+
+toggle.addEventListener('click', () => {
+  toggle.value = currentUnit === 'F' ? 'C' : 'F';
+  currentUnit = currentUnit === 'F' ? 'C' : 'F';
+  if (lastWeatherData) {
+    renderWeather(lastWeatherData);
+  }
+});
