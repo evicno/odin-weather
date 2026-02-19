@@ -1,9 +1,10 @@
 import { getWeatherData } from './weatherManager.js';
-import unknownIcon from '../icons/unknown.svg';
+import unknownIcon from '../img/unknown.svg';
 
 const weatherCard = document.querySelector('.weather');
 const toggle = document.querySelector('#toggle');
-let currentUnit = toggle.value;
+const loading = document.querySelector('.loader');
+let currentUnit = toggle.checked ? 'C' : 'F';
 let lastWeatherData = '';
 
 export const renderApp = () => {
@@ -12,10 +13,12 @@ export const renderApp = () => {
   const button = document.querySelector('button');
 
   // Reset the form and display
+  loading.style.display = 'none';
   weatherCard.style.display = 'none';
   form.reset();
 
   form.addEventListener('submit', (event) => {
+    loading.style.display = 'flex';
     weatherCard.style.display = 'none';
     event.preventDefault();
     button.disabled = true;
@@ -48,6 +51,7 @@ function renderWeather(weather) {
 
   const weatherIcon = weather.icon;
 
+  loading.style.display = 'none';
   weatherCard.style.display = 'flex';
   city.textContent = capitalizeCity(weather.city);
   conditions.textContent = weather.conditions;
@@ -83,9 +87,9 @@ function convertToCelsius(fahrenheit) {
   return Math.round((((fahrenheit - 32) * 5) / 9) * 10) / 10;
 }
 
-toggle.addEventListener('click', () => {
+toggle.addEventListener('change', () => {
   toggle.value = currentUnit === 'F' ? 'C' : 'F';
-  currentUnit = currentUnit === 'F' ? 'C' : 'F';
+  currentUnit = toggle.value;
   if (lastWeatherData) {
     renderWeather(lastWeatherData);
   }

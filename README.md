@@ -4,7 +4,7 @@ Weather App project from **The Odin Project**. Get the current weather for any c
 
 [live demo](https://evicno.github.io/odin-weather/)
 
-![preview](./src/icons/screenshot.png)
+![preview](./src/img/screenshot.png)
 
 ## Built with
 

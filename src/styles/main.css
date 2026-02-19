@@ -92,6 +92,11 @@ img {
   padding-top: 8px;
 }
 
+.loader img {
+  padding-top: 100px;
+  height: 200px;
+  width: auto;
+}
 .toggle {
   height: 40px;
   display: flex;
