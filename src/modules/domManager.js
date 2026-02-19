@@ -35,6 +35,7 @@ export const renderApp = () => {
       .catch((error) => {
         console.log(error);
         message.textContent = 'Location not found. Please try again!';
+        loading.style.display = 'none';
         weatherCard.style.display = 'none';
         button.disabled = false;
       });
